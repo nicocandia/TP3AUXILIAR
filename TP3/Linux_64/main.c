@@ -29,6 +29,7 @@ int main()
         {
             case 1:
                 controller_loadFromText("data.csv",listaEmpleados);
+                option++;
                 break;
         }
     }while(option != 10);

@@ -3,6 +3,7 @@
 #include "LinkedList.h"
 #include "Employee.h"
 
+
 /** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo texto).
  *
  * \param path char*
@@ -17,6 +18,9 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
     char bufferNombre[128];
     char bufferHorasTrabajadas[128];
     char bufferSueldo[128];
+    int id;
+    int HorasTrabajadas;
+    int Sueldo;
     int flagOnce=1;
     Employee* auxiliarPunteroEmployee;
 
@@ -30,7 +34,10 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
         if(fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo)==4)
         {
             auxiliarPunteroEmployee= Employee_newConParametros(atoi(bufferId),bufferNombre,atoi(bufferHorasTrabajadas),atoi(bufferSueldo));
-            printf("\n%d -- %s -- %d -- %d \n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
+            id=atoi(bufferId);
+            HorasTrabajadas=atoi(bufferHorasTrabajadas);
+            Sueldo=atoi(bufferSueldo);
+            printf("\n%d -- %s -- %d -- %d \n",id,bufferNombre,HorasTrabajadas,Sueldo);
         }
 
         if(auxiliarPunteroEmployee != NULL)
